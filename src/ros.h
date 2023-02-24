@@ -40,7 +40,7 @@
 #include <std_msgs/msg/header.h>
 
 // define constants
-#define FRAME_TIME 20 // 10ms
+#define FRAME_TIME 500 // 10ms
 //int FRAME_TIME = 100; // 100ms
 
 //---------------------------------------------Macro functions---------------------------------------------

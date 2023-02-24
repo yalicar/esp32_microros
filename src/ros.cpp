@@ -157,12 +157,12 @@ void PublishWheelOdom() {
     // set the position
     odom_msg.pose.pose.position.x = encoder_position.x; // x position
     odom_msg.pose.pose.position.y = encoder_position.y; // y position
-    odom_msg.pose.pose.position.z = encoder_position.theta; // z position
+    odom_msg.pose.pose.position.z = 0.0; // z position
     // set the orientation
     odom_msg.pose.pose.orientation.x = 0.0; // x orientation 
     odom_msg.pose.pose.orientation.y = 0.0; // y orientation
-    odom_msg.pose.pose.orientation.z = 0.0; // z orientation
-    odom_msg.pose.pose.orientation.w = 1.0; // w orientation
+    odom_msg.pose.pose.orientation.z = encoder_position.theta;
+    odom_msg.pose.pose.orientation.w = 0.0; // w orientation
     // set the linear velocity 
     odom_msg.twist.twist.linear.x = encoder_velocity.linear;
     odom_msg.twist.twist.linear.y = 0.0;

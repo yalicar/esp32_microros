@@ -7,7 +7,7 @@ encoder_setup_t encoder_setup = {
     .PIN_B = GPIO_NUM_19,
     .RESOLUTION = 12, // 12 bits
     .PULSES_PER_REV = 40, // 40 pulses per revolution
-    .FRAME_TIME_MS = 20, // 50 Hz
+    .FRAME_TIME_MS = 500, // 50 Hz
     .WHEEL_DIAMETER = 0.066, // diameter of wheel in meters
     .WHEEL_BASE = 0.15 // distance between wheels in meters
 };
@@ -136,7 +136,7 @@ void encoder_direction_()
 void encoder_speed_()
 {
     // left encoder speed calculation (rpm)
-    encoder_speed.left = (encoder_count.left * encoder_direction.right * 60 *1000 )/ (encoder_setup.PULSES_PER_REV * encoder_setup.FRAME_TIME_MS);
+    encoder_speed.left = (encoder_count.left * encoder_direction.left * 60 *1000 )/ (encoder_setup.PULSES_PER_REV * encoder_setup.FRAME_TIME_MS);
     // right encoder speed calculation (rpm)
     encoder_speed.right = (encoder_count.right * encoder_direction.right * 60*1000) / (encoder_setup.PULSES_PER_REV  * encoder_setup.FRAME_TIME_MS);
 }
@@ -144,9 +144,9 @@ void encoder_speed_()
 void encoder_velocity_()
 {
     // linear velocity calculation (m/s)
-    encoder_velocity.linear = (encoder_speed.left + encoder_speed.right) * (M_PI * encoder_setup.WHEEL_DIAMETER) / (2 * 60);
+    encoder_velocity.linear = ((encoder_speed.left + encoder_speed.right) * (M_PI * encoder_setup.WHEEL_DIAMETER)) / (2 * 60);
     // angular velocity calculation (rad/s)
-    encoder_velocity.angular = (encoder_speed.right - encoder_speed.left) * (M_PI * encoder_setup.WHEEL_DIAMETER) / (encoder_setup.WHEEL_BASE * 60);
+    encoder_velocity.angular = ((encoder_speed.right - encoder_speed.left) * (M_PI * encoder_setup.WHEEL_DIAMETER)) / (encoder_setup.WHEEL_BASE * 60);
 }
 
 // encoder position function
