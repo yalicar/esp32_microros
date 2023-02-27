@@ -18,10 +18,10 @@ imu_setup_t imu_setup = {
 
 void setup() {
 // put your setup code here, to run once:
-IPAddress agent_ip(192, 168, 1, 105);
+IPAddress agent_ip(192, 168, 1, 31);
 size_t agent_port = 8888;
-char ssid[] = "504";
-char psk[]= "cardenas16V";
+char ssid[] = "CLARO1_8D971B";
+char psk[]= "0s3WtDtFLq";
 set_microros_wifi_transports(ssid, psk, agent_ip, agent_port);
 
 // import functions
